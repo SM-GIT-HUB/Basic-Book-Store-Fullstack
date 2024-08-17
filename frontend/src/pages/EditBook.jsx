@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import {useState, useEffect} from 'react'
-import Back from '../Components/Back';
-import Spinner from '../Components/Spinner';
-import axios from 'axios';
-import {useNavigate, useParams} from 'react-router-dom';
+import Back from '../Components/Back'
+import Spinner from '../Components/Spinner'
+import axios from 'axios'
+import {useNavigate, useParams} from 'react-router-dom'
+import { useSnackbar } from 'notistack'
 
 function EditBook() {  
   const [title, setTitle] = useState("");
@@ -11,6 +12,7 @@ function EditBook() {
   const [publishyear, setPublishyear] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   const { id } = useParams();
 
@@ -40,6 +42,8 @@ function EditBook() {
     }
     
     await axios.put(`http://localhost:5555/books/${id}`, bookData);
+    
+    enqueueSnackbar("Book edited successfully", {variant: "success"});
 
     navigate('/');
   }

@@ -1,8 +1,9 @@
-import {useState} from 'react'
-import Back from '../Components/Back';
-import Spinner from '../Components/Spinner';
-import axios from 'axios';
-import {useNavigate} from 'react-router-dom';
+import { useState } from 'react'
+import Back from '../Components/Back'
+import Spinner from '../Components/Spinner'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
+import { useSnackbar } from 'notistack'
 
 function CreateBook() {
   const [title, setTitle] = useState("");
@@ -10,6 +11,7 @@ function CreateBook() {
   const [publishyear, setPublishyear] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
 
   async function createNewBook()
   {
@@ -23,6 +25,7 @@ function CreateBook() {
     await axios.post("http://localhost:5555/books", bookData);
 
     setLoading(false);
+    enqueueSnackbar("Book created and listed successfully", {variant: "success"});
     navigate('/');
   }
 

@@ -7,7 +7,7 @@ function Back({destination = "/"}) {
     <>
       <div className="flex ml-1">
         <Link to={destination} className="bg-sky-800 text-white px-4 py-1 rounded-[7px] w-fit">
-            <BsArrowLeft className="text-2xl"/>
+          <BsArrowLeft className="text-2xl"/>
         </Link>
       </div>
     </>
