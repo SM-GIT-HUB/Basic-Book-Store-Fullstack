@@ -16,7 +16,7 @@ function DelBook() {
 
     async function DeleteBook()
     {
-        axios.delete(`http://localhost:5555/books/${id}`);
+        axios.delete(`http://localhost:${import.meta.env.VITE_PORT}/books/${id}`);
 
         enqueueSnackbar("Book deleted successfully", {variant: "success"});
 
@@ -25,7 +25,7 @@ function DelBook() {
 
     async function findBook() {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5555/books/${id}`)
+        const response = await axios.get(`http://localhost:${import.meta.env.VITE_PORT}/books/${id}`)
         // console.log(response.data);
         setBook(response.data);
 

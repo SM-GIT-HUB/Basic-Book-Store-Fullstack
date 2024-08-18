@@ -1,8 +1,8 @@
 import express from "express"
-import { PORT } from "./config.js"
 import mongoose from "mongoose"
 import booksRoute from './routes/booksRoutes.js'
 import cors from "cors"
+import "dotenv/config"
 
 const app = express();
 
@@ -20,8 +20,8 @@ mongoose.connect("mongodb://127.0.0.1:27017/dbb")
 .then(() => {
     console.log("Connection successful");
 
-    app.listen(PORT, () => {
-        console.log(`listening ${PORT}`);
+    app.listen(process.env.PORT, () => {
+        console.log(`listening ${process.env.PORT}`);
     })
 })
 .catch((err) => {

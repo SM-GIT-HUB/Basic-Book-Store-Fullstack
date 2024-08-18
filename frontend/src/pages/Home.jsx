@@ -18,7 +18,7 @@ function Home() {
 
   async function getBooks() {
     setLoading(true);
-    const response = await axios.get("http://localhost:5555/books");
+    const response = await axios.get(`http://localhost:${import.meta.env.VITE_PORT}/books`);
     // console.log(response.data.data);
     setBooks(response.data.data);
 
